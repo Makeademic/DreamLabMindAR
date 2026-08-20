@@ -5,16 +5,17 @@
     <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.5/dist/mindar-image-aframe.prod.js"></script>
   </head>
   <body>
+	  <!-- Create a target using the Image Targets Compiler tool https://hiukim.github.io/mind-ar-js-doc/tools/compile -->
     <a-scene mindar-image="imageTargetSrc: https://makeademic.github.io/DreamLabMindAR/DreamLabCloud.mind;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
       <a-assets>
-
+	<!--Create folder with .gltf and .bin and point to .gltf (can export .obj from Tinkercad and use online converter to gltf, .glb does not work -->
 	<a-asset-item id="avatarModel" src="https://makeademic.github.io/DreamLabMindAR/DreamLabCloud/tinker.gltf"></a-asset-item>
       </a-assets>
 
       <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
       <a-entity mindar-image-target="targetIndex: 0">
-
+	<!-- needed to rotate from original model, this scale seems to work well, animate bobbing up and down 1 second loop -->
 	<a-gltf-model rotation="-90 0 0 " position="0 0 0.1" scale="0.005 0.005 0.005" src="#avatarModel"
 	  animation="property: position; to: 0 0.1 0.1; dur: 1000; easing: easeInOutQuad; loop: true; dir: alternate"
 	>
